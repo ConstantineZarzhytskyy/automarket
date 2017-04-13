@@ -1,0 +1,12 @@
+<div>
+  <h1>Автосалони</h1>
+
+  <ui>
+    <li ng-repeat="automarket in automarkets track by $index">
+      {{ automarket._id }} - {{ automarket.name }} | {{ automarket.description }}
+      <button ng-click="removeAutomarket(automarket._id)">Х</button>
+    </li>
+  </ui>
+
+  <button ng-click="createAutomarket()">Створити новий салон</button>
+</div>
