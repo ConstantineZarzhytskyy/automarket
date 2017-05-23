@@ -3,11 +3,12 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var _= require('lodash');
 var localdb = 'mongodb://localhost/automarket';
+var mLab= 'mongodb://admin:admin@ds149501.mlab.com:49501/automarket';
 var db = require('./db/db.js');
 
 connectToDataBase();
 function connectToDataBase() {
-  return mongoose.connect(localdb);
+  return mongoose.connect(mLab);
 }
 
 router.get('/automarket', function (req, res) {
