@@ -1,3 +1,39 @@
 <div>
-  automarket
+  {{ automarket.name }}
+
+  <div>
+    <hr>
+    {{ automarket.description }}
+
+    <hr>
+    <button ng-click="showAddPersonal()">Додавти співробітника</button>
+    <div ng-if="isAddPerosnal">
+      <label>Ім'я</label>
+        <input type="text" ng-model="newPersonal.name">
+      <label>Опис</label>
+        <input type="text" ng-model="newPersonal.description">
+      <button ng-click="addPersonal(newPersonal)">Зберегти</button>
+    </div>
+
+    <ui ng-repeat="member in automarket.personal track by $index">
+      <li>{{ member.name }} - {{ member.description }}</li>
+    </ui>
+
+    <hr>
+    <button ng-click="showAddAuto()">Додавти автомобіль</button>
+    <div ng-if="isAddAuto">
+      <label>Ім'я</label><input type="text" ng-model="newAuto.name">
+      <label>Опис</label><input type="text" ng-model="newAuto.description">
+      <label>Опис</label><input type="color" ng-model="newAuto.color">
+      <label>Опис</label><input type="number" step="1" ng-model="newAuto.price">
+      <button ng-click="addAuto(newAuto)">Зберегти</button>
+    </div>
+    <ui ng-repeat="auto in automarket.auto track by $index">
+      <li ng-style="{ 'background-color': auto.color }"
+          ng-click="goToAutoPage(auto._id)">
+        {{ auto.name }} - [ціна: {{ auto.price }}] - [опис: {{ auto.description }}]
+      </li>
+    </ui>
+
+  </div>
 </div>

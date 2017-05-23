@@ -3,7 +3,9 @@
 
   <ui>
     <li ng-repeat="automarket in automarkets track by $index">
-      {{ automarket._id }} - {{ automarket.name }} | {{ automarket.description }}
+      <div ng-click="goToAutomarketPage(automarket._id)">
+        {{ automarket._id }} - {{ automarket.name }} | {{ automarket.description }}
+      </div>
       <button ng-click="removeAutomarket(automarket._id)">Х</button>
     </li>
   </ui>
