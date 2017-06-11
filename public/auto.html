@@ -3,6 +3,23 @@
   [Ціна]:{{ auto.price }}<hr>
   [Опис]:{{ auto.description }}<hr>
   [Колір]:<span ng-style="{ 'background-color': auto.color }">{{ auto.color}}</span><hr>
+  <button ng-click="showBuyAuto()">Купити</button> - {{ auto.buy }} - {{ auto.type }} - {{ auto.buyPrice }}
+  <div ng-if="isBuyAuto">
+    <label>Комплектація</label>
+    <select name="singleSelect" ng-model="auto.buy">
+      <option value="min">Мінімальна комплектація</option>
+      <option value="max">Максимальна комплектація</option>
+      <option value="standart">Стандартна комплектація</option>
+    </select><br>
+    <label>Оплата</label>
+    <select name="singleSelect" ng-model="auto.type">
+      <option value="cash">Готівка</option>
+      <option value="credit">Кредит</option>
+      <option value="localProgram">Програма лояльності(обмін старого на новий)</option>
+    </select><br>
+    <button ng-click="buyAuto()">V</button>
+  </div>
+  <hr>
   Акції
   <button ng-click="showAddShares()">Створити акцію</button>
   <div ng-if="isAddShares">
@@ -19,6 +36,7 @@
   <ui ng-repeat="shares in auto.shares track by $index">
     <li>
       [{{ shares.start | date: 'MM/dd/yyyy' }} : {{ shares.end | date: 'MM/dd/yyyy' }}] - [ {{ shares.percentage }}% ] - [ {{ shares.name }} ]
+      <button ng-click="removeShares(shares._id)">X</button>
     </li>
   </ui>
 

@@ -23,14 +23,23 @@ router.post('/automarket', function (req, res) {
   var automarket = req.body.automarket;
   var newAutomarket = new db.automarket();
 
-  newAutomarket.name = automarket.name;
-  newAutomarket.description = automarket.description;
+  if (_.has(automarket, '_id')) {
+    db.automarket.update({ _id: automarket._id }, { name: automarket.name, description: automarket.description }, function (err) {
+      if (err) { return res.send(err); }
 
-  newAutomarket.save(function (err, automarket) {
-    if (err) { return res.send(err); }
+      res.end();
+    });
+  } else {
+    newAutomarket.name = automarket.name;
+    newAutomarket.description = automarket.description;
 
-    res.json(automarket);
-  });
+    newAutomarket.save(function (err, automarket) {
+      if (err) { return res.send(err); }
+
+      res.json(automarket);
+    });
+  }
+
 });
 
 router.get('/automarket/:id', function (req, res) {
@@ -105,8 +114,17 @@ router.get('/auto/:autoId', function (req, res) {
       res.json(_.merge(auto, { shares: shares }));
     })
   });
+});
 
+router.put('/auto/:autoId', function (req, res) {
+  var autoId = req.params.autoId;
+  var auto = req.body.auto;
 
+  db.auto.update({ _id: autoId }, { buy: auto.buy, buyPrice: auto.buyPrice, type: auto.type }, function (err) {
+    if (err) { return res.send(err); }
+
+    res.end();
+  });
 });
 
 router.post('/shares', function (req, res) {
@@ -125,6 +143,16 @@ router.post('/shares', function (req, res) {
 
     res.json(shares);
   });
+});
+
+router.delete('/shares/:sharesId', function (req, res) {
+  var sharesId = req.params.sharesId;
+
+  db.shares.remove({ _id: sharesId }, function (err) {
+    if (err) { return req.send(err); }
+
+    res.end();
+  })
 });
 
 module.exports = router;

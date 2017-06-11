@@ -1,14 +1,22 @@
 <div>
   <h1>Автосалони</h1>
 
+  <button ng-click="showAddAutomarket()">Створити новий салон</button>
+  <div ng-if="isAddAutomarket">
+    <label>Ім'я</label>
+    <input type="text" ng-model="newAutomarket.name">
+    <label>Опис</label>
+    <input type="text" ng-model="newAutomarket.description">
+    <button ng-click="createAutomarket(newAutomarket)">Зберегти</button>
+  </div>
   <ui>
     <li ng-repeat="automarket in automarkets track by $index">
-      <div ng-click="goToAutomarketPage(automarket._id)">
-        {{ automarket._id }} - {{ automarket.name }} | {{ automarket.description }}
-      </div>
+      <span ng-click="goToAutomarketPage(automarket._id)">
+        {{ automarket.name }} | {{ automarket.description }}
+      </span>
+      <button ng-click="editAutomarket(automarket)">|</button>
       <button ng-click="removeAutomarket(automarket._id)">Х</button>
     </li>
   </ui>
 
-  <button ng-click="createAutomarket()">Створити новий салон</button>
 </div>

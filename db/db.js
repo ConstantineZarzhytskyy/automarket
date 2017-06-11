@@ -14,7 +14,10 @@ var auto = new Schema({
   description: { type: String, default: '' },
   color: { type: String, default: '#fff' },
   shares: { type: Array },
-  price: { type: Number }
+  price: { type: Number },
+  buy: { type: String },
+  type: { type: String },
+  buyPrice: { type: Number }
 });
 
 var personal = new Schema({

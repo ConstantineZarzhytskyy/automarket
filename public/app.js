@@ -32,6 +32,7 @@
 
   function DashboardCtrl($scope, $http, $location) {
     $scope.automarkets = [];
+    $scope.isAddAutomarket = false;
 
     getAautomarkets();
     function getAautomarkets() {
@@ -43,13 +44,25 @@
           });
     }
 
-    $scope.createAutomarket = function () {
-      $http.post('/api/automarket', { automarket: { name: 'automarket1', description: 'automarket1 description' } })
+    $scope.showAddAutomarket = function () {
+      $scope.isAddAutomarket = !$scope.isAddAutomarket;
+    };
+
+    $scope.createAutomarket = function (automarket) {
+      $http.post('/api/automarket', { automarket: automarket })
           .then(function () {
+            $scope.showAddAutomarket();
             getAautomarkets();
           }, function (err) {
             console.log(err);
           });
+    };
+
+    $scope.editAutomarket = function (automarket) {
+      $scope.newAutomarket = automarket;
+      if (!$scope.isAddAutomarket) {
+        $scope.showAddAutomarket();
+      }
     };
 
     $scope.removeAutomarket = function (id) {
@@ -124,7 +137,7 @@
 
   function AutoCtrl($scope, $http, $routeParams) {
     $scope.autoId = $routeParams.autoId;
-    $scope.isAddShares = false;
+    $scope.isAddShares = $scope.isBuyAuto = false;
 
     getAuto($scope.autoId);
     function getAuto(autoId) {
@@ -152,5 +165,37 @@
             console.log(err);
           })
     };
+
+    $scope.removeShares = function (sharesId) {
+      $http.delete('/api/shares/' + sharesId)
+          .then(function () {
+            getAuto($scope.autoId);
+          }, function (err) {
+            console.log(err);
+          })
+    };
+
+    $scope.showBuyAuto = function () {
+      $scope.isBuyAuto = !$scope.isBuyAuto;
+    };
+    
+    $scope.buyAuto = function () {
+      var today = new Date();
+      var buyPrice = $scope.auto.price;
+
+      for(var i in $scope.auto.shares) {
+        if (new Date($scope.auto.shares[i].start) <= today && today <= new Date($scope.auto.shares[i].end)) {
+          buyPrice = buyPrice * (100 - $scope.auto.shares[i].percentage) / 100;
+        }
+      }
+      $scope.auto.buyPrice = buyPrice;
+      $http.put('/api/auto/'+ $scope.auto._id, { auto: $scope.auto })
+          .then(function () {
+            $scope.showBuyAuto();
+            getAuto($scope.autoId);
+          }, function (err) {
+            console.log(err);
+          })
+    }
   }
 })();

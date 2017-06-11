@@ -24,8 +24,8 @@
     <div ng-if="isAddAuto">
       <label>Ім'я</label><input type="text" ng-model="newAuto.name">
       <label>Опис</label><input type="text" ng-model="newAuto.description">
-      <label>Опис</label><input type="color" ng-model="newAuto.color">
-      <label>Опис</label><input type="number" step="1" ng-model="newAuto.price">
+      <label>Колір</label><input type="color" ng-model="newAuto.color">
+      <label>Ціна</label><input type="number" step="1" ng-model="newAuto.price">
       <button ng-click="addAuto(newAuto)">Зберегти</button>
     </div>
     <ui ng-repeat="auto in automarket.auto track by $index">
