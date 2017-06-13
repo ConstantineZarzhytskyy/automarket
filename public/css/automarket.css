@@ -1,0 +1,109 @@
+body
+{
+	background-color: grey;
+	background-image: url(http://s.rdrom.ru/4/pubs/4483/32031/1731015.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+label 
+{
+	font: 1em georgia;
+	text-shadow: red 1px 0px, red 1px 1px, red 0px 1px, red -1px 1px, red -1px 0px, red -1px -1px, red 0px -1px, red 1px -1px;
+	color: white;
+}
+a.button12 {
+  position: relative;
+  display: inline-block;
+  font-size: 100%;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: #053852 -1px 1px, #053852 1px 1px, #053852 1px -1px, #053852 -1px -1px;
+  text-decoration: none;
+  user-select: none;
+  padding: .3em .7em;
+  outline: none;
+  border-radius: 7px;
+  background: #053852 repeating-linear-gradient(135deg, #053852, #053852 10px, #1679ad 10px, #1679ad 20px, #053852 20px);
+  box-shadow:
+   inset -2px -2px rgba(0,0,0,.3),
+   inset 2px 2px rgba(255,255,255,.3);
+ 
+}
+a.button12:hover, a.button12:focus {
+  text-shadow: #0175b1 -1px 1px, #0175b1 1px 1px, #0175b1 1px -1px, #0175b1 -1px -1px;
+  background: #0175b1 repeating-linear-gradient(135deg, #0175b1, #0175b1 10px, #8fd2f5 10px, #8fd2f5 20px, #0175b1 20px) no-repeat;
+  background-size: 1000% 100%;
+}
+a.button12:hover {
+  background-position: 0 0;
+}
+a.button12:focus {
+  color: rgba(255,255,255,0);
+  text-shadow: rgba(1,117,177,0) -1px 1px, rgba(1,117,177,0) 1px 1px, rgba(1,117,177,0) 1px -1px, rgba(1,117,177,0) -1px -1px;
+  background-position: 900% 0;
+  transition: background-position linear 600s, color .5s, text-shadow .5s;
+}
+a.button12:after {
+  content: "загрузка\2026";
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: .3em .7em;
+  color: rgba(0,0,0,0);
+  text-shadow: none;
+  transition: 3s;
+}
+a.button12:focus:after {
+  color: #fff;
+  text-shadow: #0175b1 -1px 1px, #0175b1 1px 1px, #0175b1 1px -1px, #0175b1 -1px -1px;
+  transition: .5s;
+}
+a.button6 {
+  position: relative;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #cc5500;
+  user-select: none;
+  padding: .1em 1em;
+  outline: none;
+  border-radius: 1px;
+  background: linear-gradient(to left, rgba(0,0,0,.3), rgba(0,0,0,.0) 50%, rgba(0,0,0,.3)), linear-gradient(#d77d31, #fe8417, #d77d31);
+  background-size: 100% 100%, auto;
+  background-position: 50% 50%;
+  box-shadow: inset #ebab00 0 -1px 1px, inset 0 1px 1px #ffbf00, #cc7722 0 0 0 1px, #000 0 10px 15px -10px;
+  transition: 0.2s;
+}
+a.button6:hover {
+  background-size: 140% 100%, auto;
+}
+a.button6:active {
+  top: 1px;
+  color: blue;
+  box-shadow: inset #ebab00 0 -1px 1px, inset 0 1px 1px #ffbf00, #cc7722 0 0 0 1px, 0 10px 10px -9px #000;
+}
+h1
+{
+	color: white;
+	text-align: center;
+	text-shadow: #0175b1 -2px 2px, #0175b1 1px 1px, #0175b1 1px -1px, #0175b1 -1px -1px;
+	font-size: 28pt;
+}
+h2
+{
+	color: white;
+}
+h2:hover
+{
+	text-shadow: red 1px 0px, red 1px 1px, red 0px 1px, red -1px 1px, red -1px 0px, red -1px -1px, red 0px -1px, red 1px -1px;
+}
+li
+{
+	color: white;
+}
+li:hover
+{
+	text-shadow: red 1px 0px, red 1px 1px, red 0px 1px, red -1px 1px, red -1px 0px, red -1px -1px, red 0px -1px, red 1px -1px;
+}

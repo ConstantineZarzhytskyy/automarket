@@ -1,9 +1,15 @@
+<head>
+<Link rel="stylesheet" href="css/auto.css" type="text/css" />
+</head>
+<body>
 <div>
-  [Автомобіль]: {{ auto.name }}<hr>
-  [Ціна]:{{ auto.price }}<hr>
-  [Опис]:{{ auto.description }}<hr>
-  [Колір]:<span ng-style="{ 'background-color': auto.color }">{{ auto.color}}</span><hr>
-  <button ng-click="showBuyAuto()">Купити</button> - {{ auto.buy }} - {{ auto.type }} - {{ auto.buyPrice }}
+  <a class="h1">Автомобіль:</a><a class="h2">{{ auto.name }}</a> <hr>
+  <a class="h1">Ціна:</a><a class="h2">{{ auto.price }}</a><hr>
+  <a class="h1">Опис:</a><a class="h2">{{ auto.description }}</a><hr>
+  <a class="h1">Колір:</a><a class="h2"><span ng-style="{ 'background-color': auto.color }">{{ auto.color}}</span><hr></a>
+  
+<a class="button" ng-click="showBuyAuto()">Купити</a>
+ <a class="h3">{{ auto.buy }} - {{ auto.type }} - {{ auto.buyPrice }}</a>
   <div ng-if="isBuyAuto">
     <label>Комплектація</label>
     <select name="singleSelect" ng-model="auto.buy">
@@ -17,11 +23,11 @@
       <option value="credit">Кредит</option>
       <option value="localProgram">Програма лояльності(обмін старого на новий)</option>
     </select><br>
-    <button ng-click="buyAuto()">V</button>
+    <button class="button1" ng-click="buyAuto()">V</button>
   </div>
-  <hr>
-  Акції
-  <button ng-click="showAddShares()">Створити акцію</button>
+  
+  <a class="h1">Акції</a>
+  <a class="button6" ng-click="showAddShares()">Створити акцію</a>
   <div ng-if="isAddShares">
     <label>Ім'я</label>
       <input type="text" ng-model="newShares.name">
@@ -31,13 +37,14 @@
       <input type="date" ng-model="newShares.start">
     <label>Кінець акції</label>
       <input type="date" ng-model="newShares.end">
-    <button ng-click="addShares(newShares)">Зберегти</button>
+    <a class="button12" ng-click="addShares(newShares)">Зберегти</a>
   </div>
   <ui ng-repeat="shares in auto.shares track by $index">
     <li>
       [{{ shares.start | date: 'MM/dd/yyyy' }} : {{ shares.end | date: 'MM/dd/yyyy' }}] - [ {{ shares.percentage }}% ] - [ {{ shares.name }} ]
-      <button ng-click="removeShares(shares._id)">X</button>
+      <button class="button1" ng-click="removeShares(shares._id)">X</button>
     </li>
   </ui>
 
 </div>
+</body>
