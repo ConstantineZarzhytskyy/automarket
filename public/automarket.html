@@ -20,7 +20,10 @@
     </div>
 
     <ui ng-repeat="member in automarket.personal track by $index">
-      <li>{{ member.name }} - {{ member.description }}</li>
+      <li>
+        {{ member.name }} - {{ member.description }}
+        <button class="button" ng-click="removeMember(member._id)">Х</button>
+      </li>
     </ui>
 
     <hr>
@@ -33,9 +36,9 @@
       <a class="button12" ng-click="addAuto(newAuto)">Зберегти</a>
     </div>
     <ui ng-repeat="auto in automarket.auto track by $index">
-      <li ng-style="{  }"
-          ng-click="goToAutoPage(auto._id)">
-        {{ auto.name }} - [ціна: {{ auto.price }}] - [опис: {{ auto.description }}]
+      <li>
+        <span ng-click="goToAutoPage(auto._id)">{{ auto.name }} - [ціна: {{ auto.price }}] - [опис: {{ auto.description }}]</span>
+        <button class="button" ng-click="removeAuto(auto._id)">Х</button>
       </li>
     </ui>
 

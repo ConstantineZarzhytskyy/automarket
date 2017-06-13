@@ -84,6 +84,16 @@ router.post('/member', function (req, res) {
   });
 });
 
+router.delete('/member/:memberId', function (req, res) {
+  var memberId = req.params.memberId;
+
+  db.personal.remove({ _id: memberId }, function (err) {
+    if (err) { return req.send(err); }
+
+    res.end();
+  })
+});
+
 router.post('/auto', function (req, res) {
   var auto = req.body.auto;
   var automarketId = req.body.automarketId;
@@ -125,6 +135,16 @@ router.put('/auto/:autoId', function (req, res) {
 
     res.end();
   });
+});
+
+router.delete('/auto/:autoId', function (req, res) {
+  var autoId = req.params.autoId;
+
+  db.auto.remove({ _id: autoId }, function (err) {
+    if (err) { return req.send(err); }
+
+    res.end();
+  })
 });
 
 router.post('/shares', function (req, res) {

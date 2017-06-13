@@ -95,6 +95,24 @@
           })
     }
 
+    $scope.removeMember = function (memberId) {
+      $http.delete('/api/member/' + memberId)
+          .then(function () {
+            getAutomarket($scope.automarketId);
+          }, function (err) {
+            console.log(err);
+          });
+    };
+
+    $scope.removeAuto = function (autoId) {
+      $http.delete('/api/auto/' + autoId)
+          .then(function () {
+            getAutomarket($scope.automarketId);
+          }, function (err) {
+            console.log(err);
+          });
+    };
+
     $scope.showAddPersonal = function () {
       $scope.isAddPerosnal = !$scope.isAddPerosnal;
     };
